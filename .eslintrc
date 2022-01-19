@@ -1,0 +1,21 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "no-loops", /* wtyczka dla pętli */
+    "sonarjs"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb"
+  ],
+  "rules": {
+    "no-const-assign": 2, /* nie zezwalaj na ponowne przypisywanie zmiennych `stałych` */
+    "arrow-body-style": 1, /* funkcja strzałkowa wymaga nawiasów kalmrowych */
+    "no-console": 2, /* nie zezwalaj na wprowadzanie console.log */
+    "no-loops/no-loops": 2 /* nie zezwalaj na pętle tj. for, while -> użyj map lub forEach */
+  }
+}
