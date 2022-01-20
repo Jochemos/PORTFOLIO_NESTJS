@@ -36,5 +36,6 @@ import UserModule from 'src/user/user.module';
   ],
   controllers: [],
   providers: [],
+  exports: []
 })
 export default class AppModule {}

@@ -6,4 +6,5 @@ export class PresentUser {
   lastName: string;
 
   email: string;
+  
 }

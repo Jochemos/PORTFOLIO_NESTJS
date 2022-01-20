@@ -16,9 +16,16 @@ import { AuthGuard } from '@nestjs/passport';
 export class LoginController {
   constructor(private loginService: LoginService) {}
 
-  @Post()
   @UseGuards(AuthGuard('local'))
+  @Post()
     async login(@Req() req, @Res({ passthrough: true }) res: Response){
+      await this.loginService.login(req.user);
       return {"status": "success"};
+    }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Get('profile')
+    getProfile(@Req() req) {
+      return req.user;
     }
 }
