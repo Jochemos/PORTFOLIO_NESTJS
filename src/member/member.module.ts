@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { MemberController } from './member.controller';
+import MemberController from './member.controller';
 
 @Module({
-  controllers: [MemberController]
+  controllers: [MemberController],
 })
-export class MemberModule {}
+export default class MemberModule {}

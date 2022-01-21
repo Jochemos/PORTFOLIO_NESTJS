@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
-import { MemberModule } from './member/member.module';
-import { LoginModule } from 'src/auth/login/login.module';
-import { RegisterModule } from './auth/register/register.module';
+import LoginModule from 'src/auth/login/login.module';
+import UserModule from 'src/user/user.module';
 import CommentEntity from 'database/entities/user.entity';
 import RegisterEntity from 'database/entities/register.entity';
-import UserModule from 'src/user/user.module';
+import RegisterModule from 'src/auth/register/register.module';
+import MemberModule from 'src/member/member.module';
 
 @Module({
   imports: [
@@ -36,6 +36,6 @@ import UserModule from 'src/user/user.module';
   ],
   controllers: [],
   providers: [],
-  exports: []
+  exports: [],
 })
 export default class AppModule {}

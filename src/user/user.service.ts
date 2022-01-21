@@ -20,5 +20,4 @@ export default class UserService {
     const result = repo.create(comment);
     await this.user.insert(result);
   }
-
 }

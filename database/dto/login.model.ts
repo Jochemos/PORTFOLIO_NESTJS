@@ -1,4 +1,4 @@
-export class PresentUser {
+export default class PresentUser {
   userId: number;
 
   firstName: string;
@@ -6,5 +6,4 @@ export class PresentUser {
   lastName: string;
 
   email: string;
-  
 }

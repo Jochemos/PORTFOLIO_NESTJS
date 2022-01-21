@@ -3,18 +3,17 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @Entity({ name: 'register_members' })
 export default class RegisterEntity {
   @PrimaryGeneratedColumn('increment', { name: 'userid' })
-  userId: number;
+    userId: number;
 
   @Column({ name: 'firstname' })
-  firstName: string;
+    firstName: string;
 
   @Column({ name: 'lastname' })
-  lastName: string;
+    lastName: string;
 
   @Column({ name: 'email' })
-  email: string;
+    email: string;
 
   @Column()
-  password: string;
-
+    password: string;
 }

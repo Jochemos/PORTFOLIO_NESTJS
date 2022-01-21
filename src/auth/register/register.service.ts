@@ -5,7 +5,7 @@ import RegisterEntity from 'database/entities/register.entity';
 import RegisterModelDto from 'database/dto/register.model';
 
 @Injectable()
-export class RegisterService {
+export default class RegisterService {
   constructor(
     @InjectRepository(RegisterEntity)
       private member: Repository<RegisterEntity>,
@@ -16,5 +16,4 @@ export class RegisterService {
     const result = repo.create(newMember);
     await this.member.insert(result);
   }
-
 }

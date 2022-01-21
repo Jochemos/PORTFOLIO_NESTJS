@@ -5,7 +5,7 @@ import {
   Post,
 } from '@nestjs/common';
 import DataModel from 'database/dto/data.model';
-import UserService from 'src/user/user.service';
+import UserService from './user.service';
 
 @Controller('anonymous')
 export default class UserController {
@@ -20,5 +20,4 @@ export default class UserController {
   async save(@Body() comment: DataModel) {
     await this.baseService.createComment(comment);
   }
-
 }

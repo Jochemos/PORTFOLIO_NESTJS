@@ -1,5 +1,6 @@
-import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common';
-import RegisterModelDto from 'database/dto/register.model';
+import {
+  PipeTransform, Injectable, ArgumentMetadata, BadRequestException,
+} from '@nestjs/common';
 import { ObjectSchema } from 'joi';
 
 @Injectable()
@@ -9,8 +10,8 @@ export default class RegisterValidatorPipe implements PipeTransform {
   transform(value: any, metadata: ArgumentMetadata) {
     const result = this.schema.validate(value);
 
-    if(result.error) {
-      const errorMessage = result.error.details.map((d) => d.message)
+    if (result.error) {
+      const errorMessage = result.error.details.map((d) => d.message);
       throw new BadRequestException(errorMessage);
     }
 

@@ -15,7 +15,17 @@
   "rules": {
     "no-const-assign": 2, /* nie zezwalaj na ponowne przypisywanie zmiennych `stałych` */
     "arrow-body-style": 1, /* funkcja strzałkowa wymaga nawiasów kalmrowych */
-    "no-console": 2, /* nie zezwalaj na wprowadzanie console.log */
-    "no-loops/no-loops": 2 /* nie zezwalaj na pętle tj. for, while -> użyj map lub forEach */
+    "no-console": 'off', /* pozwól na działania console.log */
+    "no-loops/no-loops": 2, /* nie zezwalaj na pętle tj. for, while -> użyj map lub forEach */
+    "import/no-unresolved": 'off',
+    "class-methods-use-this": 'off',
+    "no-useless-constructor": 'off',
+    "no-return-await": 'off',
+    "no-empty-function": 'off',
+    "@typescript-eslint/no-explicit-any": 'off',
+    "@typescript-eslint/no-unused-vars": 'off',
+    "import/no-extraneous-dependencies": 'off',
+    "no-undef": 'off',
+    "prefer-regex-literals": 'off',
   }
 }
