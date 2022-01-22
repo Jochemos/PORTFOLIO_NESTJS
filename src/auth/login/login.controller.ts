@@ -1,29 +1,28 @@
 import {
   Controller,
-  Req,
+  Request,
   Res,
   Get,
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { Response } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 import LoginService from './login.service';
 
-@Controller('login')
+@Controller()
 export default class LoginController {
   constructor(private loginService: LoginService) {}
 
   @UseGuards(AuthGuard('local'))
-  @Post()
-  async login(@Req() req, @Res({ passthrough: true }) res: Response) {
+  @Post('login')
+  async login(@Request() req, @Res({ passthrough: true }) res) {
     await this.loginService.login(req.user);
-    return { status: 'success' };
+    return {"status": "success"};
   }
 
   @UseGuards(AuthGuard('jwt'))
   @Get('profile')
-  async getProfile(@Req() req) {
-    return await req.user;
+  async getProfile(@Request() req) {
+    return req.user;
   }
 }
