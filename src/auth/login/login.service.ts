@@ -13,24 +13,14 @@ export default class LoginService {
       private jwtService: JwtService,
   ) {}
 
-  async validateUser(email: string, password: string): Promise<PresentUser> {
-    const user = await this.member.findOne({ email });
 
-    if (user === null || password === null) {
-      return null;
-    }
-
-    const presentUser = new PresentUser();
-    presentUser.userId = user.userId;
-    presentUser.firstName = user.firstName;
-    presentUser.lastName = user.lastName;
-    presentUser.email = user.email;
-
-    return presentUser;
+  async validateUser(email: string, password: string): Promise<any> {
+    const user = await this.member.findOne({email: email});
+    return user;
   }
 
-  public async login(presentUser: PresentUser): Promise<string> {
-    const payLoad = { ...presentUser };
-    return await this.jwtService.signAsync(payLoad);
+  async login(user){
+    const payload = { ...user };
+    return this.jwtService.sign(payload);
   }
 }
