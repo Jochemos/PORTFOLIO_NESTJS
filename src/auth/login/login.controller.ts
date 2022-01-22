@@ -6,7 +6,6 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
-import { Response } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 import LoginService from './login.service';
 
@@ -16,13 +15,14 @@ export default class LoginController {
 
   @UseGuards(AuthGuard('local'))
   @Post('login')
-  async login(@Request() req) {
-    return this.loginService.login(req.user);
+  async login(@Request() req, @Res({ passthrough: true }) res) {
+    await this.loginService.login(req.user);
+    return {"status": "success"};
   }
 
   @UseGuards(AuthGuard('jwt'))
   @Get('profile')
-  getProfile(@Request() req) {
+  async getProfile(@Request() req) {
     return req.user;
   }
 }
