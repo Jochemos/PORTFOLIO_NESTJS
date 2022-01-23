@@ -9,7 +9,7 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import LoginService from './login.service';
 
-@Controller()
+@Controller('anonymous')
 export default class LoginController {
   constructor(private loginService: LoginService) {}
 

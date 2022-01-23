@@ -9,11 +9,11 @@ import RegisterValidatorPipe from './validation/validation.pipe';
 import registerSchema from './validation/validation.schema';
 import RegisterService from './register.service';
 
-@Controller('register')
+@Controller('anonymous')
 export default class RegisterController {
   constructor(private registerService: RegisterService) {}
 
-  @Post()
+  @Post('register')
   @UsePipes(new RegisterValidatorPipe(registerSchema))
   async userRegistration(@Body() registerModelDto: RegisterModelDto) {
     await this.registerService.createUser(registerModelDto);
