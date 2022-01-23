@@ -36,6 +36,6 @@ import MemberModule from 'src/member/member.module';
   ],
   controllers: [],
   providers: [],
-  exports: [],
+  exports: [LoginModule],
 })
 export default class AppModule {}

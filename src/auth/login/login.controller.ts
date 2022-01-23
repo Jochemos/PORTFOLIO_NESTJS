@@ -16,8 +16,12 @@ export default class LoginController {
   @UseGuards(AuthGuard('local'))
   @Post('login')
   async login(@Request() req, @Res({ passthrough: true }) res) {
-    await this.loginService.login(req.user);
-    return {"status": "success"};
+    const token = await this.loginService.login(req.user);
+    const secretData = {
+      token,
+    };
+    res.cookie('auth-cookie', secretData, { httpOnly: true });
+    return { status: 'success' };
   }
 
   @UseGuards(AuthGuard('jwt'))
