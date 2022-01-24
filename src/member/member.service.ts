@@ -10,8 +10,8 @@ export default class MemberService {
       private member: Repository<RegisterEntity>,
   ) {}
 
-//  async getProfile(id: string): Promise<any> {
-//      throw new NotFoundException('member not found');
-//    }
-//  }
+  async getProfile(firstname: string, lastname: string): Promise<any> {
+    return this.member.find({ firstName: firstname, lastName: lastname });
+  }
+
 }
