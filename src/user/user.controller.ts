@@ -19,5 +19,6 @@ export default class UserController {
   @Post('addcomment')
   async save(@Body() comment: DataModel) {
     await this.baseService.createComment(comment);
+    return { status: 'Thank you for comment' };
   }
 }

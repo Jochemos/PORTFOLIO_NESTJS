@@ -1,20 +1,14 @@
 import { IsNotEmpty, MinLength, MaxLength } from 'class-validator';
 
-export default class DataModel {
+export default class MemberDataModel {
   commentId?: number;
 
-  @MinLength(5, {
-    message: 'Your nick is too short',
-  })
-  @MaxLength(10, {
-    message: 'Your nick is too long',
-  })
-    author: string;
+  author: string;
 
   @MinLength(1, {
     message: 'Enter comment before send',
   })
-  @MaxLength(500, {
+  @MaxLength(700, {
     message: 'Your comment is too long',
   })
   @IsNotEmpty()
