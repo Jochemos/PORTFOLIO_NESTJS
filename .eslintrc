@@ -16,7 +16,7 @@
     "no-const-assign": 2, /* decline to reuse assign const variables */
     "arrow-body-style": 1, /* arrow function must have braces */
     "no-console": 'off', /* allow for actions by console.log */
-    "no-loops/no-loops": 2, /* do not allow functions like for, while -> use map or forEach */
+    "no-loops/no-loops": 1, /* do not allow functions like for, while -> use map or forEach */
     "import/no-unresolved": 'off',
     "class-methods-use-this": 'off',
     "no-useless-constructor": 'off',

@@ -4,13 +4,15 @@ import RegisterEntity from 'database/entities/register.entity';
 import CommentEntity from 'database/entities/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import MemberController from './member.controller';
-import MemberActionsService from './member.comments.service';
+import MemberProfitsController from './member.calc.controller';
 import MemberService from './member.service';
+import MemberActionsService from './member.comments.service';
+import MemberProfitsService from './member.calc.service';
 
 @Module({
   imports: [LoginModule, TypeOrmModule.forFeature([RegisterEntity, CommentEntity])],
-  controllers: [MemberController],
+  controllers: [MemberController, MemberProfitsController],
   exports: [LoginModule],
-  providers: [MemberService, MemberActionsService],
+  providers: [MemberService, MemberActionsService, MemberProfitsService],
 })
 export default class MemberModule {}

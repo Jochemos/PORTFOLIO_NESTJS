@@ -18,8 +18,8 @@ import LoginController from './login.controller';
     TypeOrmModule.forFeature([RegisterEntity]),
     PassportModule,
     JwtModule.register({
-      secret: 'process.env.JWT_SECRET',
-      signOptions: { expiresIn: '1h' },
+      secret: process.env.JWT_SECRET,
+      signOptions: { expiresIn: '5h' },
     }),
   ],
   controllers: [LoginController],
