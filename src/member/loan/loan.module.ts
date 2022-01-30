@@ -6,6 +6,6 @@ import StrategyBService from './strategy/strategyB.service';
 
 @Module({
   controllers: [LoanController],
-  providers: [LoanService, StrategyAService, StrategyBService]
+  providers: [LoanService, StrategyAService, StrategyBService],
 })
-export class LoanModule {}
+export default class LoanModule {}

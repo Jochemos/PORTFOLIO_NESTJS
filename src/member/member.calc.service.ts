@@ -5,14 +5,15 @@ import DataStockModel from 'database/dto/data.stock.model';
 export default class MemberProfitsService {
   private readonly StockData: DataStockModel[] = [];
 
-  public createNewData(data: DataStockModel) {
+  public async createNewData(data: DataStockModel) {
     this.StockData.push(data);
-    const tablo = this.StockData[0];
+    const tabloView = this.StockData[0];
     const values = [];
-    for (const [key, value] of Object.entries(tablo)) {
-      const text = `${parseFloat(value)}`;
-      values.push(text);
-    }
+
+    Object.values(tabloView).map((val) => {
+      const txtData = `${parseFloat(val)}`;
+      return values.push(txtData);
+    });
 
     const nof = Number(values[0]);
     const pp = Number(values[1]);

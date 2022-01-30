@@ -12,12 +12,13 @@ export default class UserController {
   constructor(private baseService: UserService) {}
 
   @Get('allcomments')
-  async getAll() {
-    return await this.baseService.execute();
+  async getAll(): Promise<object> {
+    const executeView = await this.baseService.execute();
+    return executeView;
   }
 
   @Post('addcomment')
-  async save(@Body() comment: DataModel) {
+  async save(@Body() comment: DataModel): Promise<object> {
     await this.baseService.createComment(comment);
     return { status: 'Thank you for comment' };
   }

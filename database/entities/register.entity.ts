@@ -1,9 +1,13 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'register_members' })
 export default class RegisterEntity {
   @PrimaryGeneratedColumn('increment', { name: 'userid' })
-    userId: number;
+    userId?: number;
 
   @Column({ name: 'firstname' })
     firstName: string;

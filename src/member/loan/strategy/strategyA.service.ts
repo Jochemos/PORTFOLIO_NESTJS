@@ -5,42 +5,38 @@ import AnswerModel from 'database/dto/loan.answer.model';
 
 @Injectable()
 export default class StrategyAService implements StrategyModel {
-  private readonly LoanData: LoanModel[] = [];
+  private readonly loanData: LoanModel[] = [];
 
   public doCalc(data: LoanModel): AnswerModel {
-    this.LoanData.push(data);
-    const contentLoan = this.LoanData[0];
+    this.loanData.push(data);
+    const contentLoan = this.loanData[0];
     const valuesLoan = [];
-    for (const [key, value] of Object.entries(contentLoan)) {
-      const text = `${parseFloat(value)}`;
-      valuesLoan.push(text);
-    }
 
-//  Value assignment for calculation
+    Object.values(contentLoan).map((val) => {
+      const textView = `${parseFloat(val)}`;
+      return valuesLoan.push(textView);
+    });
+
+    // Value assignment for calculation
     const aoc = Number(valuesLoan[0]);
     const rp = Number(valuesLoan[1]);
     const ni = Number(valuesLoan[2]) / 100;
-    const co = Number(valuesLoan[3]);
 
-
-//  Amount of installment (details)
+    // Amount of installment (details)
     const up = aoc * ni;
-    const inside = 1 - ( 12 / 12 + ni );
-    const outside = Math.pow(inside, rp);
-    const down = 12 * outside;
+    const inside = 12 / (12 + ni);
+    const outside = inside ** rp;
+    const down = (12 * (1 - outside));
 
-//  Interest rate (part of formula: Amount of installment)
-//    const ir = ni / 12;
-
-//  Amount of installment (base)
+    // Amount of installment (base)
     const partOfSum = up / down;
 
-// Total cost of the loan
-    const totalSum = partOfSum * rp;
+    // Total cost of the loan
+    const totalSum = parseFloat(partOfSum.toFixed(2)) * rp;
 
     const answer = {
-      'TOTAL COST OF THE LOAN': totalSum,
-      'AMOUNT OF INSTALLMENT': partOfSum,
+      totalCostOfLoan: totalSum,
+      amountOfInstallment: parseFloat(partOfSum.toFixed(2)),
     };
 
     return answer;

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, getRepository } from 'typeorm';
+import { Repository } from 'typeorm';
 import CommentEntity from 'database/entities/user.entity';
 import DataModel from 'database/dto/data.model';
 
@@ -12,12 +12,15 @@ export default class UserService {
   ) {}
 
   public async execute(): Promise<CommentEntity[]> {
-    return await this.user.find();
+    const foundOne = await this.user.find();
+    return foundOne;
   }
 
   public async createComment(comment: DataModel): Promise<void> {
-    const repo = getRepository(CommentEntity);
-    const result = repo.create(comment);
-    await this.user.insert(result);
+    const newComment = new CommentEntity();
+    newComment.author = comment.author;
+    newComment.comment = comment.comment;
+
+    await this.user.save(newComment);
   }
 }

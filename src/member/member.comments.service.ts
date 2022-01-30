@@ -12,7 +12,8 @@ export default class MemberActionsService {
   ) {}
 
   public async execute(): Promise<CommentEntity[]> {
-    return await this.comments.find();
+    const findThis = await this.comments.find();
+    return findThis;
   }
 
   public async createComment(comment: DataModel, name: string): Promise<void> {
@@ -20,6 +21,6 @@ export default class MemberActionsService {
     newComment.author = name;
     newComment.comment = comment.comment;
     newComment.created_At = comment.created_At;
-    await this.comments.insert(newComment);
+    await this.comments.save(newComment);
   }
 }

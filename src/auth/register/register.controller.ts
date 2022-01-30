@@ -15,7 +15,8 @@ export default class RegisterController {
 
   @Post('register')
   @UsePipes(new RegisterValidatorPipe(registerSchema))
-  async userRegistration(@Body() registerModelDto: RegisterModelDto) {
+  async userRegistration(@Body() registerModelDto: RegisterModelDto): Promise<string> {
     await this.registerService.createUser(registerModelDto);
+    return 'register successful';
   }
 }

@@ -10,7 +10,8 @@ export default class MemberService {
       private member: Repository<RegisterEntity>,
   ) {}
 
-  async getProfile(firstname: string, lastname: string): Promise<any> {
-    return this.member.find({ firstName: firstname, lastName: lastname });
+  public async getProfile(firstname: string, lastname: string): Promise<object> {
+    const dataUser = await this.member.find({ firstName: firstname, lastName: lastname });
+    return dataUser;
   }
 }

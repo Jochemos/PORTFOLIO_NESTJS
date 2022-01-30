@@ -9,7 +9,7 @@ export default class LoanModel {
   })
     amountOfCredit: number;
 
-  @IsInt({ mesage: 'Enter the number of months' })
+  @IsInt({ message: 'Enter the number of months' })
   @Min(3, {
     message: 'The number of months cannot be less than 3',
   })

@@ -10,18 +10,18 @@ export default class DataStockModel {
     numberOfStock: number;
 
   @Min(0.01, {
-    message: 'Enter purchase at least 0.01 dolar',
+    message: 'Enter purchase at least 0.01 $',
   })
   @Max(1000000, {
-    message: 'Sorry... you must enter max. 1 milion dolar',
+    message: 'Sorry... you must enter max. 1 milion $',
   })
     purchasePrice: number;
 
   @Min(0.01, {
-    message: 'Enter your profit or loss at least 0.01 dolar',
+    message: 'Enter your profit or loss at least 0.01 $',
   })
   @Max(10000000, {
-    message: 'Enter less profit (max. 10 milion)',
+    message: 'Enter less profit (max. 10 milion $)',
   })
     salePrice: number;
 

@@ -15,12 +15,12 @@
   "rules": {
     "no-const-assign": 2, /* decline to reuse assign const variables */
     "arrow-body-style": 1, /* arrow function must have braces */
-    "no-console": 'off', /* allow for actions by console.log */
+    "no-console": 1, /* allow for actions by console.log */
     "no-loops/no-loops": 1, /* do not allow functions like for, while -> use map or forEach */
     "import/no-unresolved": 'off',
     "class-methods-use-this": 'off',
     "no-useless-constructor": 'off',
-    "no-return-await": 'off',
+    "no-return-await": 2,
     "no-empty-function": 'off',
     "@typescript-eslint/no-explicit-any": 'off',
     "@typescript-eslint/no-unused-vars": 'off',

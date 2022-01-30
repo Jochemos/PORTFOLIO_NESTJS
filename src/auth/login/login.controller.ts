@@ -15,7 +15,7 @@ export default class LoginController {
 
   @UseGuards(AuthGuard('local'))
   @Post('login')
-  async login(@Request() req, @Res({ passthrough: true }) res) {
+  async login(@Request() req, @Res({ passthrough: true }) res): Promise<object> {
     const token = await this.loginService.login(req.user);
     const secretData = {
       token,
@@ -26,7 +26,8 @@ export default class LoginController {
 
   @UseGuards(AuthGuard('jwt'))
   @Get('profile')
-  async getProfile(@Request() req) {
-    return req.user;
+  async getProfile(@Request() req): Promise<object> {
+    const profileView = await req.user;
+    return profileView;
   }
 }

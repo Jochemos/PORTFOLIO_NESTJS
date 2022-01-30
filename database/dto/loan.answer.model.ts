@@ -1,7 +1,5 @@
 export default class AnswerModel {
+  totalCostOfLoan: number;
 
-    totalCostOfLoan: number;
-
-    amountOfInstallment: number;
-
+  amountOfInstallment: number;
 }

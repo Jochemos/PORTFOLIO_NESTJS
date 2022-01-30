@@ -12,13 +12,13 @@ export default class LoginService {
       private jwtService: JwtService,
   ) {}
 
-  async validateUser(email: string, password: string): Promise<any> {
+  public async validateUser(email: string, password: string): Promise<object> {
     const user = await this.member.findOne({ email });
     return user;
   }
 
-  async login(user) {
-    const payload = { ...user };
+  public async login(user): Promise<string> {
+    const payload = await { ...user };
     return this.jwtService.sign(payload);
   }
 }

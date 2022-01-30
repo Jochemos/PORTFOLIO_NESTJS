@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, getRepository } from 'typeorm';
+import { Repository } from 'typeorm';
 import RegisterEntity from 'database/entities/register.entity';
 import RegisterModelDto from 'database/dto/register.model';
 
@@ -12,8 +12,13 @@ export default class RegisterService {
   ) {}
 
   public async createUser(newMember: RegisterModelDto): Promise<void> {
-    const repo = getRepository(RegisterEntity);
-    const result = repo.create(newMember);
-    await this.member.insert(result);
+    const newUser = new RegisterEntity();
+
+    newUser.firstName = newMember.firstName;
+    newUser.lastName = newMember.lastName;
+    newUser.email = newMember.email;
+    newUser.password = newMember.password;
+
+    await this.member.save(newUser);
   }
 }

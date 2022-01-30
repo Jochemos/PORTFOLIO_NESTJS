@@ -1,25 +1,22 @@
 import {
   Controller,
   Body,
-  Param,
-  Request,
-  Get,
   Post,
   UseGuards,
-  NotFoundException,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import LoanModel from 'database/dto/loan.model';
-import LoanService from './loan.service';
 import AnswerModel from 'database/dto/loan.answer.model';
+import LoanService from './loan.service';
 
-@Controller()
+@Controller(':firstname:lastname')
 export default class LoanController {
   constructor(public loanService: LoanService) {}
 
-  //@UseGuards(AuthGuard('jwt'))
+  @UseGuards(AuthGuard('jwt'))
   @Post('repayment')
   async calcLoan(@Body() data: LoanModel): Promise<AnswerModel> {
-    return await this.loanService.createNewLoan(data);
+    const calcData = await this.loanService.createNewLoan(data);
+    return calcData;
   }
 }

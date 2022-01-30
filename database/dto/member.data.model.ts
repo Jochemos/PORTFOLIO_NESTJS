@@ -1,9 +1,15 @@
-import { IsNotEmpty, MinLength, MaxLength } from 'class-validator';
+import {
+  IsString,
+  IsNotEmpty,
+  MinLength,
+  MaxLength,
+} from 'class-validator';
 
 export default class MemberDataModel {
   commentId?: number;
 
-  author: string;
+  @IsString()
+    author: string;
 
   @MinLength(1, {
     message: 'Enter comment before send',

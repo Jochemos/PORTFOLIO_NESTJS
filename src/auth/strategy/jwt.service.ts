@@ -9,8 +9,8 @@ export default class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     super({
       jwtFromRequest: ExtractJwt.fromExtractors([
         (request: Request) => {
-          const secretData = request?.cookies['auth-cookie'];
-          return secretData?.token;
+          const secretData = request.cookies['auth-cookie'];
+          return secretData.token;
         },
       ]),
       ignoreExpiration: false,
@@ -18,7 +18,7 @@ export default class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
     });
   }
 
-  async validate(payload) {
+  validate(payload) {
     return payload;
   }
 }
