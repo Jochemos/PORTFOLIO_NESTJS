@@ -2,7 +2,6 @@ import {
   Controller,
   Request,
   Res,
-  Get,
   Post,
   UseGuards,
 } from '@nestjs/common';
@@ -15,19 +14,25 @@ export default class LoginController {
 
   @UseGuards(AuthGuard('local'))
   @Post('login')
-  async login(@Request() req, @Res({ passthrough: true }) res): Promise<object> {
+  async login(@Request() req, @Res({ passthrough: true }) response): Promise<any> {
     const token = await this.loginService.login(req.user);
     const secretData = {
       token,
     };
-    res.cookie('auth-cookie', secretData, { httpOnly: true });
-    return { status: 'success' };
-  }
+    const result = await response.cookie('auth-cookie', secretData, { httpOnly: true });
 
-  @UseGuards(AuthGuard('jwt'))
-  @Get('profile')
-  async getProfile(@Request() req): Promise<object> {
-    const profileView = await req.user;
-    return profileView;
+    if (result) {
+      response.status(200).json({
+        data: [],
+      });
+    } else {
+      response.status(400).json({
+        error: {
+          code: 400,
+          msg: 'Bad Request',
+          details: 'Data is not correct',
+        },
+      });
+    }
   }
 }
